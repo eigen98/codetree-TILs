@@ -28,7 +28,7 @@ var preCol = -1
 if n * m == zeroPosition.count { 
     print(n * m) 
 }else if zeroPosition.count == 0{
-    print(1)
+    print(0)
 }else{
 
 
