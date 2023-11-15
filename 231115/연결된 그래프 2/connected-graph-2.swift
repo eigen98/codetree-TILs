@@ -1,4 +1,5 @@
-var nm = readLine()!.split(separator: " ").map{Int(String($0))!}
+var nm = readLine()?.split(separator: " ").map{Int(String($0)) ?? 1} ?? [1, 0]
+
 var n = nm[0]
 var m = nm[1]
 var visited = [Bool](repeating: false, count : n + 1)
