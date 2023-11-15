@@ -1,10 +1,9 @@
-var nm = readLine()?.split(separator: " ").map{Int(String($0)) ?? 1} ?? [1, 0]
-
+var nm = readLine()!.split(separator: " ").map{Int(String($0))!}
 var n = nm[0]
 var m = nm[1]
-var visited = [Bool](repeating: false, count : n + 1)
-var possibleCount = [[Int]](repeating: [Int](repeating: 0, count: 2), count : n + 1)
-var adjArr = [[Int]](repeating: [Int](), count : n + 1)
+var visited = [Bool](repeating: false, count : 1001)
+var possibleCount = [[Int]](repeating: [Int](repeating: 0, count: 2), count : 1001)
+var adjArr = [[Int]](repeating: [Int](), count : 1001)
 
 if n == 1{
     print(1)
@@ -50,22 +49,19 @@ if n == 1{
 
 }
 
-func dfs(start: Int) -> Int {
-    if visited[start] {
-        return possibleCount[start][1]
-    }
-
-    visited[start] = true
+func dfs(start: Int) -> Int{
     var result = 1
-
-    for next in adjArr[start] {
-        if !visited[next] {
-            result += dfs(start: next)
-        } else {
+    visited[start] = true
+    for next in adjArr[start]{
+        if visited[next]{
             result += possibleCount[next][1]
+            continue
         }
+        
+        var plusCount = dfs(start: next)
+        result += plusCount
+        
     }
-
     possibleCount[start][1] = result
     return result
 }
