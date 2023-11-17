@@ -88,12 +88,14 @@ func getCount(arr :[Int]){
 //dist: 타겟과의 거리
 func dfs(start: Int, dist: Int){
      //print("가능한 타겟: \(start)")
-    if !alarmArr[start] { return }
+    //if !alarmArr[start] { return }
 
     for next in adjArr[start]{
-        if authorityArr[next] < dist { continue }
+        
         if !alarmArr[next] { continue }
-        alarmPossibleCount += 1
+        if authorityArr[next] >= dist { 
+             alarmPossibleCount += 1
+        }
         dfs(start: next, dist: dist + 1)
     }
 }
