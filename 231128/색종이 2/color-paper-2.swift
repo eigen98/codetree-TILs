@@ -46,6 +46,7 @@ func dfs(r: Int, c: Int){
             answer += 1
             continue
         }
+        dfs(r: nr, c: nc)
     }
 
 }
