@@ -37,6 +37,7 @@ func dfs(r: Int, c: Int){
         var nr = r + dir[i][0]
         var nc = c + dir[i][1]
         if nr < 0 || nr >= 501 || nc < 0 || nc >= 501{
+            answer += 1
             continue
         }
 
